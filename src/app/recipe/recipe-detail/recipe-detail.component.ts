@@ -14,11 +14,12 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService,
+    private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
-  exportToShoppingList(){
+  exportToShoppingList() {
     this.shoppingListService.exportIngredientsFromRecipe(this.recipe.ingredients);
   }
 
@@ -28,13 +29,22 @@ export class RecipeDetailComponent implements OnInit {
         this.id = +params['id'];
         this.recipe = this.recipeService.getRecipe(this.id);
       }
-    )
+    );
   }
 
-  onEditRecipe(){
-    //Both of thes work fine. The second is more precise and specific and allows for multi-level navigation.
+  onEditRecipe() {
+    // Both of thes work fine. The second is more precise and specific and allows for multi-level navigation.
     // this.router.navigate(['edit'], {relativeTo: this.activatedRoute});
     this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.activatedRoute});
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    if (this.recipeService.recipes.length > 0) {
+      this.recipe = this.recipeService.getRecipe(0);
+    } else {
+      this.router.navigate(['recipes']);
+    }
   }
 
 }
