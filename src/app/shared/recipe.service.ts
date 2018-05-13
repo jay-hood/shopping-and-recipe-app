@@ -3,6 +3,7 @@ import { Recipe } from '../recipe/recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shared/shopping-list.service';
 import {Subject} from 'rxjs/Subject';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class RecipeService {
@@ -35,6 +36,11 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  replaceRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
   updateRecipe(index: number, recipe: Recipe) {
     this.recipes[index] = recipe;
     this.recipesChanged.next(this.recipes.slice());
@@ -44,6 +50,8 @@ export class RecipeService {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
   }
+
+
 
 
 
