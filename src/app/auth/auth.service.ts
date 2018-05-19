@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 @Injectable()
 export class AuthService {
 
-  token: String;
+  token: string;
 
   constructor(private router: Router) {
 
