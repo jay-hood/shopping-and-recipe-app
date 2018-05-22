@@ -14,10 +14,10 @@ export class ShoppingListComponent implements OnInit {
   shoppingListState: Observable<{ingredients: Ingredient[]}>;
 
 
-  constructor(private shoppingListService: ShoppingListService, private store: Store<(
+  constructor(private shoppingListService: ShoppingListService, private store: Store<{
     shoppingList: {
       ingredients: Ingredient []
-    })>) { }
+    }}>) { }
 
   ngOnInit() {
     // this.ingredients = this.shoppingListService.getIngredients();

@@ -21,10 +21,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private shoppingListService: ShoppingListService, private store: Store<(
-    shoppingList: {
-      ingredients: Ingredient []
-    })>) { }
+  constructor(private shoppingListService: ShoppingListService, private store: Store <{shoppingList: {ingredients: Ingredient[]}}> ) { }
+  // constructor(private slService: ShoppingListService, private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) { }
 
 
   onSubmit(form: NgForm) {
