@@ -8,6 +8,8 @@ export const ADD_INGREDIENTS_FROM_RECIPE = 'ADD_INGREDIENTS_FROM_RECIPE';
 export const UPDATE_INGREDIENT = 'UPDATE_INGREDIENT';
 export const REMOVE_INGREDIENT = 'REMOVE_INGREDIENT';
 export const ADD_INGREDIENTS_TO_SHOPPING_LIST = 'ADD_INGREDIENTS_TO_SHOPPING_LIST';
+export const START_EDIT = 'START_EDIT';
+export const STOP_EDIT = 'STOP_EDIT';
 
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
@@ -52,7 +54,7 @@ export class AddIngredientsFromRecipe implements Action {
 export class UpdateIngredient implements Action {
   readonly type = UPDATE_INGREDIENT;
 
-  constructor(public payload: {index: number, ingredient: Ingredient}) {
+  constructor(public payload: {ingredient: Ingredient}) {
 
   }
 
@@ -60,11 +62,20 @@ export class UpdateIngredient implements Action {
 export class RemoveIngredient implements Action {
   readonly type = REMOVE_INGREDIENT;
 
+}
+export class StartEdit implements Action {
+  readonly type = START_EDIT;
+
   constructor(public payload: number) {
 
   }
 
 }
+export class StopEdit implements Action {
+  readonly type = STOP_EDIT;
+
+}
 
 export type ShoppingListActions = AddIngredient | AddIngredientsFromRecipe |
-AddIngredientsToShoppingList | UpdateIngredient | RemoveIngredient;
+AddIngredientsToShoppingList | UpdateIngredient | RemoveIngredient | StartEdit |
+StopEdit;

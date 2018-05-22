@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Recipe} from '../recipe.model';
 import { RecipeService } from '../../shared/recipe.service';
-import { ShoppingListService } from '../../shared/shopping-list.service';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import { Ingredient } from '../../shared/ingredient.model';
+import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
+
 
 
 @Component({
@@ -18,7 +19,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private store: Store<{shoppingList: {ingredients: Ingredient[]}}>, private recipeService: RecipeService,
+  constructor(private store: Store<fromShoppingList.AppState>, private recipeService: RecipeService,
     private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
