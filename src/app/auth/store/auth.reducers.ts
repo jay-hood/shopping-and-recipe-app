@@ -1,7 +1,7 @@
 import * as AuthActions from './auth.actions';
 
 export interface State {
-  token: String;
+  token: string;
   authenticated: boolean;
 }
 
@@ -23,6 +23,11 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         ...state,
         token: null,
         authenticated: false
+      };
+    case AuthActions.SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload
       };
     default: return state;
   }
