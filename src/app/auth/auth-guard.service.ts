@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate {
   constructor(private store: Store<fromApp.AppState>) { }
 
   canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.store.select('auth').map(
+    return this.store.select('auth').take(1).map(
       (authState: fromAuth.State) => {
         return authState.authenticated;
       }
