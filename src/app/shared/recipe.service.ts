@@ -12,14 +12,16 @@ export class RecipeService {
     [new Ingredient('Beef', 3), new Ingredient('Buns', 2), new Ingredient('Salt', 1)])];
 
 
+  replaceRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
   }
 
-  getRecipe(id: number) {
-    return this.recipes.slice()[id];
-  }
+
 
   constructor() { }
 
@@ -28,27 +30,30 @@ export class RecipeService {
   //   this.store.dispatch(new ShoppingListActions.AddIngredientsToShoppingList(ingredients));
   // }
 
-  addRecipe(recipe: Recipe) {
-    this.recipes.push(recipe);
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  replaceRecipes(recipes: Recipe[]) {
-    this.recipes = recipes;
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  updateRecipe(index: number, recipe: Recipe) {
-    this.recipes[index] = recipe;
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice());
-  }
 
 
+  //
+  //
+  // addRecipe(recipe: Recipe) {
+  //   this.recipes.push(recipe);
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
+  //
+  // getRecipe(id: number) {
+  //   return this.recipes.slice()[id];
+  // }
+  //
+  // updateRecipe(index: number, recipe: Recipe) {
+  //   this.recipes[index] = recipe;
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
+  //
+  // deleteRecipe(index: number) {
+  //   this.recipes.splice(index, 1);
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
+  //
+  //
 
 
 

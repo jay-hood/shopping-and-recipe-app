@@ -25,26 +25,6 @@ export class DataStorageService {
   fetchRecipes() {
     // const token = this.authService.getToken();
 
-    this.httpClient.get<Recipe[]>('https://ng-recipe-book-jay.firebaseio.com/data.json', {
-      observe: 'body',
-      responseType: 'json'
-    })
-    .map(
-      (recipes) => {
-        for (const recipe of recipes) {
-          if (!recipe['ingredients']) {
-            console.log(recipe);
-            recipe['ingredients'] = [];
-          }
-        }
-        return recipes;
-
-      }
-    ).subscribe(
-        (recipes: Recipe[]) => {
-          this.recipeService.replaceRecipes(recipes);
-        }
-      );
   }
 
 }
