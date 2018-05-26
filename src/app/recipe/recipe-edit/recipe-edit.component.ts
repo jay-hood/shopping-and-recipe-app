@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {FormGroup, FormControl, FormArray, Validators} from '@angular/forms';
-import {RecipeService} from '../../shared/recipe.service';
 import * as RecipeActions from '../store/recipe.actions';
 import * as fromRecipe from '../store/recipe.reducers';
 import { Store } from '@ngrx/store';
@@ -22,8 +21,7 @@ export class RecipeEditComponent implements OnInit {
   constructor(
     private store: Store<fromRecipe.FeatureState>,
     private route: ActivatedRoute,
-    private router: Router,
-    private recipeService: RecipeService) { }
+    private router: Router) { }
 
   onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
