@@ -8,8 +8,8 @@ import * as fromShoppingList from '../../shopping-list/store/shopping-list.reduc
 import * as fromApp from '../../store/app.reducers';
 import * as fromRecipes from '../store/recipe.reducers';
 import * as RecipeActions from '../store/recipe.actions';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   exportToShoppingList() {
-    this.store.select('recipes').take(1).subscribe(
+    this.store.select('recipes').pipe(take(1)).subscribe(
       (recipeState: fromRecipes.State) => {
         this.store.dispatch(new ShoppingListActions
           .AddIngredientsToShoppingList(recipeState.recipes[this.id].ingredients));

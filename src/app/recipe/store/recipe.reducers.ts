@@ -5,11 +5,11 @@ import * as fromApp from '../../store/app.reducers';
 
 
 export interface FeatureState extends fromApp.AppState {
-  recipes: State
+  recipes: State;
 }
 
 export interface State {
-  recipes: Recipe[]
+  recipes: Recipe[];
 }
 
 const initialState: State = {
@@ -21,7 +21,7 @@ const initialState: State = {
 };
 
 export function recipeReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case RecipeActions.REPLACE_RECIPES:
       return {
         ...state,
